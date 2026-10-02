@@ -19,6 +19,7 @@ body {
     background-color: var(--fondo-crema); 
     line-height: 1.8;
     font-size: 1.15rem;
+    overflow-x: hidden; /* Evitar scroll horizontal en celular */
 }
 
 .container {
@@ -29,8 +30,8 @@ body {
 
 /* Header */
 header {
-    background-color: var(--fondo-verde); /* Cambiado a Verde de la tarjeta */
-    color: white; /* Texto principal en blanco para que resalte sobre el verde */
+    background-color: var(--fondo-verde); 
+    color: white;
     text-align: center;
     position: relative;
     padding-top: 60px;
@@ -72,6 +73,7 @@ header h1 {
     max-width: 600px;
     margin: 0 auto 30px auto; 
     opacity: 0.9;
+    padding: 0 15px;
 }
 
 /* Hero CTA Button */
@@ -87,7 +89,7 @@ header h1 {
     gap: 15px;
     text-decoration: none;
     color: var(--fondo-verde);
-    background-color: white; /* Botón blanco para resaltar sobre verde */
+    background-color: white; 
     font-size: 1.3rem;
     font-weight: 800;
     transition: all 0.3s ease;
@@ -103,7 +105,7 @@ header h1 {
 }
 
 .btn-hero .contact-icon {
-    background-color: var(--icono-naranja); /* Icono en naranja tarjeta */
+    background-color: var(--icono-naranja); 
     color: white;
     width: 40px;
     height: 40px;
@@ -119,6 +121,7 @@ header h1 {
     margin-bottom: 30px;
     font-size: 2.2rem;
     font-family: 'Lora', serif;
+    line-height: 1.3;
 }
 
 .section-title.left-align {
@@ -156,6 +159,7 @@ strong {
 
 .profile-image img {
     width: 350px;
+    max-width: 100%;
     height: 450px;
     object-fit: cover;
     border-radius: 30px 30px 100px 30px;
@@ -191,7 +195,7 @@ strong {
     font-size: 1.1rem;
     margin: 12px 0;
     display: flex;
-    align-items: center;
+    align-items: flex-start; /* Alineado arriba para textos largos en cel */
     gap: 15px;
 }
 
@@ -200,6 +204,7 @@ strong {
     background-color: var(--fondo-crema);
     width: 40px;
     height: 40px;
+    min-width: 40px; /* Evita que el icono se achique */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -226,6 +231,7 @@ strong {
     flex-direction: column;
     gap: 20px;
     width: 350px;
+    max-width: 100%;
 }
 
 .photo-1, .photo-2 {
@@ -266,6 +272,7 @@ strong {
 .fun-list li span {
     font-size: 1.5rem;
     margin-top: 3px;
+    min-width: 25px;
 }
 
 /* Contact Section */
@@ -308,6 +315,8 @@ strong {
     padding: 10px 25px;
     border-radius: 50px;
     background-color: rgba(255, 255, 255, 0.2); 
+    width: fit-content;
+    max-width: 100%;
 }
 
 .contact-item:hover {
@@ -321,6 +330,7 @@ strong {
     color: white;
     width: 45px;
     height: 45px;
+    min-width: 45px;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -336,26 +346,64 @@ footer {
     padding-bottom: 40px;
 }
 
-/* Responsive Design */
+/* =========================================
+   RESPONSIVE DESIGN (CELULARES)
+========================================= */
 @media (max-width: 768px) {
+    .container {
+        padding: 40px 15px; /* Menos padding lateral y superior en celular */
+    }
+
+    header {
+        padding-top: 40px;
+    }
+
     header h1 {
-        font-size: 2.8rem;
+        font-size: 2.2rem; /* Achicado para que no desborde */
+    }
+
+    .subtitle {
+        font-size: 1.2rem;
+    }
+
+    .hero-description {
+        font-size: 1.1rem;
+    }
+
+    .btn-hero {
+        font-size: 1.1rem;
+        padding: 8px 25px 8px 10px;
     }
     
     .profile-section, .dual-content {
         flex-direction: column;
         text-align: center;
+        gap: 30px;
+    }
+
+    .section-title {
+        font-size: 1.8rem;
     }
 
     .section-title.left-align {
         text-align: center;
     }
+
+    .intro-text {
+        font-size: 1.1rem;
+        padding: 25px 15px; /* Reducido el padding gigante en mobile */
+    }
     
     .profile-image img {
         width: 100%;
-        max-width: 320px;
+        max-width: 280px;
         height: auto;
-        box-shadow: none;
+        box-shadow: none; /* Quitamos la sombra corrida en celular para ahorrar espacio */
+    }
+
+    .valores-box {
+        padding: 20px 15px;
+        text-align: left; /* Mantenemos texto alineado a la izq aunque la foto esté centrada */
     }
 
     .dual-images {
@@ -364,11 +412,17 @@ footer {
     }
 
     .photo-1, .photo-2 {
-        transform: none;
-        max-width: 300px;
+        transform: none; /* Quitamos rotación en cel para que se vea más limpio */
+        max-width: 100%;
     }
 
     .contact-wrapper {
-        border-top-left-radius: 40px;
+        border-top-left-radius: 40px; /* Curva más suave en mobile */
+        margin-top: 40px;
+    }
+
+    .contact-item {
+        font-size: 1.1rem;
+        padding: 8px 20px;
     }
 }
